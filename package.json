@@ -1,23 +1,28 @@
 {
   "name": "react-coge-cli",
-  "version": "1.0.0",
-  "main": "./dist/main.js",
+  "version": "1.0.1",
+  "description": "React component generator",
+  "main": "./lib/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/r00dan/react-coge-cli"
   },
   "license": "MIT",
+  "private": false,
   "type": "module",
   "bin": {
-    "react-coge": "./dist/main.js"
+    "react-coge": "./lib/main.js"
   },
   "scripts": {
-    "start:localy": "tsc && tsc-alias && node --experimental-specifier-resolution=node ./dist/main.js",
-    "start": "tsc && tsc-alias && ./entry.sh"
+    "clear": "rimraf lib/",
+    "build": "yarn clear && tsc && tsc-alias",
+    "start:localy": "yarn build && node --experimental-specifier-resolution=node ./dist/main.js",
+    "start": "yarn build && ./entry.sh"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",
     "@types/node": "^18.0.3",
+    "rimraf": "^3.0.2",
     "tsc-alias": "^1.6.11",
     "typescript": "^4.7.4"
   },
