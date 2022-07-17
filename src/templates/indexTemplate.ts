@@ -1,0 +1,1 @@
+export const indexTemplate = (name: string): string => `export { ${name}Container as ${name} } from './${name}Container';`;
