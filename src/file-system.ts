@@ -2,9 +2,13 @@ import fs from 'fs/promises';
 import { firstLetterToUpperCase, __dirname } from "utils";
 
 export enum Extentions {
+  JS = '.js',
+  JSX = '.jsx',
   TS = '.ts',
   TSX = '.tsx',
-  SCSS = '.scss'
+  CSS = '.css',
+  SCSS = '.scss',
+  SASS = '.sass',
 }
 
 interface CreateFileInput {
@@ -39,5 +43,25 @@ export class FileSystem {
   public async createDirectory(): Promise<void> {
     const directory = `${this.getCurrentDirectory()}/${this.dirName}`;
     await fs.mkdir(directory);
+  }
+
+  public async createStylesFile({
+    name,
+    template,
+    extention
+  }: CreateFileInput) {
+    const fileName = `${name ? name : this.dirName}`;
+    const file = `${this.getCurrentDirectory()}/${this.dirName}/${fileName}${extention}`;
+    await fs.writeFile(file, template(this.dirName));
+  }
+
+  public async createStylesModuleFile({
+    name,
+    template,
+    extention
+  }: CreateFileInput) {
+    const fileName = `${name ? name : this.dirName}.module`;
+    const file = `${this.getCurrentDirectory()}/${this.dirName}/${fileName}${extention}`;
+    await fs.writeFile(file, template(this.dirName));
   }
 }

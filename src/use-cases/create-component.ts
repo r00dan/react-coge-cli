@@ -15,7 +15,7 @@ export class CreateComponentUseCase extends UseCase {
       extention: Extentions.TSX,
       template: component,
     });
-    await this.fs.createFile({
+    await this.fs.createStylesModuleFile({
       extention: Extentions.SCSS,
       template: style,
     });

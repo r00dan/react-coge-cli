@@ -25,7 +25,7 @@ export class CreateContainerUseCase extends UseCase {
       name: 'index',
       template: index,
     });
-    await this.fs.createFile({
+    await this.fs.createStylesModuleFile({
       extention: Extentions.SCSS,
       template: style,
     });

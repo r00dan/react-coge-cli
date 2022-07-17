@@ -3,11 +3,7 @@ export const containerTemplate = (name: string): string =>
 
 import { ${name} } from './${name}'
 
-interface I${name}ContainerProps {}
-
-export function ${name}Container({
-
-}: I${name}ContainerProps) {
-  return createElement(${name});
+export function ${name}Container() {
+  return createElement(${name}, {});
 }
 `;
